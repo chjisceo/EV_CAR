@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>전기차충전소: Main</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='img/core-img/favicon.png') }}">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename= 'main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename= 'css/style.css') }}">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- **** Header Area Start **** -->
+    <header class="header-area">
+        <!-- Top Header Area Start -->
+        <div class="top-header-area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-6">
+                        <div class="top-header-content">
+                            <a href="#"><i class="icon_mail"></i> <span>XXXXXX@gmail.com</span></a>
+                            <a href="#"><i class="icon_phone"></i> <span>(+82) 10 XXXX XXXX</span></a>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="top-header-content">
+                            <!-- Top Social Area -->
+                            <div class="top-social-area ml-auto">
+                                <a href="https://map.naver.com/v5/"><img src="{{ url_for('static', filename='img/core-img/navermap1.png') }}" alt="Naver_map" width="30" height="30"></a>
+                                <a href="https://map.kakao.com/"><img src="{{ url_for('static', filename='img/core-img/kakaomap.png') }}" alt="Kakao_map" width="30" height="30"></a>
+                                <a href="https://www.google.com/maps/"><img src="{{ url_for('static', filename='img/core-img/google.jpeg') }}" alt="google_map" width="30" height="30"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top Header Area End -->
+
+        <!-- Main Header Start -->
+        <div class="main-header-area animated">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Classy Menu -->
+                    <nav class="classy-navbar justify-content-between" id="rehomesNav">
+
+                        <!-- Logo -->
+                        <a class="nav-brand" href="{{ url_for('home') }}">
+                        <img style="height: 48px;" src="{{ url_for('static', filename='img/core-img/evcar2.png') }}" alt="">
+                        </a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+                            <!-- Menu Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul id="nav">
+                                    <li class="active"><a href="{{ url_for('home') }}">Home</a></li>
+                                    <li><a href="{{ url_for('upload_get') }}">Our System</a></li>
+                                </ul>
+
+                                <!-- Contact btn -->
+                                <div class="contact-btn mt-3 mt-lg-0 ml-3 ml-lg-5">
+                                    <a href="{{ url_for('contact') }}">Contact Us</a>
+                                </div>
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- **** Header Area End **** -->
+
+    <!-- **** Welcome Maps Area Start **** -->
+    <div class="welcome-area wow fadeInUp" data-wow-delay="200ms">
+        <div class="naver-maps" id="naverMap"></div>
+    </div>
+    <!-- **** Welcome Maps Area End **** -->
+
+    <!-- **** Location Search Form Area **** -->
+    <div class="rehomes-search-form-area wow fadeInUp" data-wow-delay="200ms">
+        <div class="container">
+            <div class="rehomes-search-form">
+                <form action="#" method="post">
+                    <div class="row">
+                        <div class="col-12 col-lg-9">
+                            <a class="error_a" style="color:ghostwhite">현재 위치와 약 50m정도의 오차가 있을 수 있습니다.</a>
+                        </div>
+                        <div class="col-12 col-lg-3">
+                            <button type="button" id="button_iframe" class="btn rehomes-search-btn">Find Your Location</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- **** Location Search Form Area **** -->
+
+    <!-- **** Agent List Area Start **** -->
+    <div class="rehomes-agent-list-area section-padding-100-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center wow fadeInUp" data-wow-delay="200ms">
+                        <h2><span>How</span> to Use?</h2>
+                    </div>
+                </div>
+                <!-- Single Agent Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-agent-area wow fadeInUp" data-wow-delay="200ms">
+                        <!-- Agent Thumb -->
+                        <div class="single-agent-thumb">
+                            <img style="height:300px;" src="{{ url_for('static', filename='img/bg-img/clickbutton.png') }}" alt="">
+                        </div>
+                        <!-- Agent Info -->
+                        <div class="agent-info">
+                            <a href="#">Click the Button</a>
+                            <p>You can find your current location. Just click and get stations address.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Agent Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-agent-area wow fadeInUp" data-wow-delay="200ms">
+                        <!-- Agent Thumb -->
+                        <div class="single-agent-thumb">
+                            <img style="height:300px;" src="{{ url_for('static', filename='img/bg-img/clickfound.png') }}" alt="">
+                        </div>
+                        <!-- Agent Info -->
+                        <div class="agent-info">
+                            <a href="#">Find station lists</a>
+                            <p><span>Button.1</span> View nearest stations.</p>
+                            <p><span>Button.2</span> View and Route possible.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Agent Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-agent-area wow fadeInUp" data-wow-delay="200ms">
+                        <!-- Agent Thumb -->
+                        <div class="single-agent-thumb">
+                            <img style="height:300px;" src="{{ url_for('static', filename='img/bg-img/touchmap.png') }}" alt="">
+                        </div>
+                        <!-- Agent Info -->
+                        <div class="agent-info">
+                            <a href="#">Touch or Click the Map</a>
+                            <p>Click Point can be your arrival or depart location. Options will appear. Just click that you want to use.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- **** Agent List Area End **** -->
+
+
+    <!-- **** Choose Us Area Start **** -->
+    <section class="rehomes-choose-us-area section-padding-100-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center wow fadeInUp" data-wow-delay="200ms">
+                        <h2><span>Why</span> Choose Us?</h2>
+                    </div>
+                </div>
+
+                <!-- Single choose us content -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-choose-us-content wow fadeInUp" style="height:260px" data-wow-delay="200ms">
+                        <!-- Choose us Icon -->
+                        <div class="choose-us-icon">
+                            <i class="icon_search"></i>
+                        </div>
+                        <h5>Find Location</h5>
+                        <p>Find your current location by clicking here </p>
+                    </div>
+                </div>
+
+                <!-- Single choose us content -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-choose-us-content wow fadeInUp" style="height:260px" data-wow-delay="200ms">
+                        <!-- Choose us Icon -->
+                        <div class="choose-us-icon">
+                            <i class="icon_map_alt" aria-hidden="true"></i>
+                        </div>
+                        <h5>Charging station support</h5>
+                        <p>Click on the map to see the closest electronic charging stations. </p>
+                    </div>
+                </div>
+
+                <!-- Single choose us content -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-choose-us-content wow fadeInUp" style="height:260px" data-wow-delay="200ms">
+                        <!-- Choose us Icon -->
+                        <div class="choose-us-icon">
+                            <i class="icon_clock"></i>
+                        </div>
+                        <h5>Save Your Time</h5>
+                        <p>Save time by using our map to view all charging stations, and find the closest one near you.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- **** Choose Us Area End **** -->
+
+    <!-- **** Categories By Property Area Start **** -->
+    <section class="rehomes-categories-property-area section-padding-100-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center wow fadeInUp" data-wow-delay="200ms">
+                        <h2>System support from <span>NAVER</span></h2>
+                    </div>
+                </div>
+
+                <!-- Single Categories and Property Content -->
+                <div class="col-12 col-md-8">
+                    <div class="single-categories-property-area bg-gradient-overlay wow fadeInUp"
+                        data-wow-delay="200ms">
+                        <!-- Property Thumb -->
+                        <div class="property-thumb">
+                            <a href="#"><img style="height:380px;" src="{{ url_for('static', filename='img/bg-img/7.png') }}" alt=""></a>
+                        </div>
+                        <!-- Title -->
+                        <a class="categories-title" href="#">Module : Geocoder</a>
+                        <!-- Property Name and Price -->
+                        <div class="property-name-price-text">
+                            <a href="#">Map Projection</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Categories and Property Content -->
+                <div class="col-12 col-md-4">
+                    <div class="single-categories-property-area bg-gradient-overlay wow fadeInUp"
+                        data-wow-delay="200ms">
+                        <!-- Property Thumb -->
+                        <div class="property-thumb">
+                            <a href="#"><img style="height:380px;" src="{{ url_for('static', filename='img/bg-img/9.png') }}" alt=""></a>
+                        </div>
+                        <!-- Title -->
+                        <a class="categories-title" href="#">Module : Drawing</a>
+                        <!-- Property Name and Price -->
+                        <div class="property-name-price-text">
+                            <a href="#">Style Map</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Categories and Property Content -->
+                <div class="col-12 col-md-4">
+                    <div class="single-categories-property-area bg-gradient-overlay wow fadeInUp"
+                        data-wow-delay="200ms">
+                        <!-- Property Thumb -->
+                        <div class="property-thumb">
+                            <a href="#"><img style="height:380px;" src="{{ url_for('static', filename='img/bg-img/10.png') }}" alt=""></a>
+                        </div>
+                        <!-- Title -->
+                        <a class="categories-title" href="#">Module : Visualization</a>
+                        <!-- Property Name and Price -->
+                        <div class="property-name-price-text">
+                            <a href="#">Geolocation API</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Categories and Property Content -->
+                <div class="col-12 col-md-8">
+                    <div class="single-categories-property-area bg-gradient-overlay wow fadeInUp"
+                        data-wow-delay="200ms">
+                        <!-- Property Thumb -->
+                        <div class="property-thumb">
+                            <a href="#"><img style="height:380px;" src="{{ url_for('static', filename='img/bg-img/8.png') }}" alt=""></a>
+                        </div>
+                        <!-- Title -->
+                        <a class="categories-title" href="#">Module : Drawing</a>
+                        <!-- Property Name and Price -->
+                        <div class="property-name-price-text">
+                            <a href="#">Marker Information</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- **** Categories By Property Area End **** -->
+
+    <!-- **** Footer Area Start **** -->
+    <footer class="footer-area bg-img bg-overlay-2 section-padding-100-0"
+        style="background-image: url( {{ url_for('static', filename='img/bg-img/17.jpg') }} );">
+        <!-- Main Footer Area -->
+        <div class="main-footer-area">
+            <div class="container">
+                <div class="row justify-content-between">
+
+                    <!-- Footer Widget Area -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget mb-80">
+                            <!-- Footer Logo -->
+                            <a href="#" class="footer-logo"><img style="max-width: 80%;" src="{{ url_for('static', filename='img/core-img/evcar.png') }}" alt=""></a>
+                            <!-- Social Info -->
+                            <div class="social-info">
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Widget Area -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget mb-80">
+                            <!-- Widget Title -->
+                            <h5 class="widget-title">Our info</h5>
+
+                            <!-- Contact Area -->
+                            <div class="footer-contact">
+                                <p>Phone: <span>(+82) XX XXXX XXXX</span></p>
+                                <p>Email: <span>XXXXXXXXX@gmail.com</span></p>
+                                <p>Address: <span>Sejong Universtiy, Seoul</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Widget Area -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget mb-80">
+                            <!-- Widget Title -->
+                            <h5 class="widget-title">Main Cities</h5>
+
+                            <!-- Footer Nav -->
+                            <ul class="footer-nav d-flex flex-wrap">
+                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Seoul</a></li>
+                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Busan</a></li>
+                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Incheon</a></li>
+                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Daegu</a></li>
+                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Gwangju</a></li>
+                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Daejeon</a></li>
+                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Ulsan</a></li>
+                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Jeju</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Footer Widget Area -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget mb-80">
+                            <!-- Widget Title -->
+                            <h5 class="widget-title">Q & A</h5>
+
+                            <p>If you wonder about Our system, You can ask via email.</p>
+                            <!-- Newsletter Form -->
+                            <form action="{{ url_for('home') }}" class="nl-form">
+                                <input type="email" name="nl-email" class="form-control"
+                                    placeholder="Enter your email...">
+                                <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copywrite Area -->
+        <div class="copywrite-content">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Copywrite Text -->
+                    <div class="col-12 col-sm-6">
+                        <div class="copywrite-text">
+                            <p>
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> View all stations closest to
+                                you
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Footer Menu -->
+                    <div class="col-12 col-sm-6">
+                        <div class="footer-menu">
+                            <ul class="nav">
+                                <li><a href="{{ url_for('home') }}">Home</a></li>
+                                <li><a href="{{ url_for('upload_get') }}">Our System</a></li>
+                                <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- **** Footer Area End **** -->
+
+    <script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=bdmmcbykms"></script>
+    <script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=bdmmcbykms&submodules=geocoder"></script>
+    <!-- **** All JS Files ***** -->
+    <!-- jQuery 2.2.4 -->
+    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+    <!-- Popper -->
+    <script src="{{ url_for('static',filename='js/popper.min.js') }}"></script>
+    <!-- Bootstrap -->
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+    <!-- All Plugins -->
+    <script src="{{ url_for('static',filename='js/rehomes.bundle.js') }}"></script>
+    <!-- Active -->
+    <script src="{{ url_for('static',filename='js/default-assets/active.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/map.js') }}"></script>
+</body>
+
+</html>
