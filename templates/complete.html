@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="description" content="no-store">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
 
     <!-- Title -->
     <title>전기차충전소: Testing</title>
@@ -15,86 +15,83 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link rel="stylesheet" href="{{ url_for('static',filename= 'main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename= 'css/style.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader"></div>
+
+<!-- **** Header Area Start **** -->
+<header class="header-area">
+    <!-- Top Header Area Start -->
+    <div class="top-header-area">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-6">
+                    <div class="top-header-content">
+                        <a href="#"><i class="icon_mail"></i> <span>XXXXXX@gmail.com</span></a>
+                        <a href="#"><i class="icon_phone"></i> <span>(+82) 10 XXXX XXXX</span></a>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="top-header-content">
+                        <!-- Top Social Area -->
+                        <div class="top-social-area ml-auto">
+                            <a href="https://map.naver.com/v5/"><img src="{{ url_for('static', filename='img/core-img/navermap1.png') }}" alt="Naver_map" width="30" height="30"></a>
+                            <a href="https://map.kakao.com/"><img src="{{ url_for('static', filename='img/core-img/kakaomap.png') }}" alt="Kakao_map" width="30" height="30"></a>
+                            <a href="https://www.google.com/maps/"><img src="{{ url_for('static', filename='img/core-img/google.jpeg') }}" alt="google_map" width="30" height="30"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <!-- Top Header Area End -->
 
-    <!-- **** Header Area Start **** -->
-    <header class="header-area">
-        <!-- Top Header Area Start -->
-        <div class="top-header-area">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center">
-                    <div class="col-6">
-                        <div class="top-header-content">
-                            <a href="#"><i class="icon_mail"></i> <span>XXXXXX@gmail.com</span></a>
-                            <a href="#"><i class="icon_phone"></i> <span>(+82) 10 XXXX XXXX</span></a>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="top-header-content">
-                            <!-- Top Social Area -->
-                            <div class="top-social-area ml-auto">
-                                <a href="https://map.naver.com/v5/"><img src="{{ url_for('static', filename='img/core-img/navermap1.png') }}" alt="Naver_map" width="30" height="30"></a>
-                                <a href="https://map.kakao.com/"><img src="{{ url_for('static', filename='img/core-img/kakaomap.png') }}" alt="Kakao_map" width="30" height="30"></a>
-                                <a href="https://www.google.com/maps/"><img src="{{ url_for('static', filename='img/core-img/google.jpeg') }}" alt="google_map" width="30" height="30"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Top Header Area End -->
+    <!-- Main Header Start -->
+    <div class="main-header-area animated">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="rehomesNav">
 
-        <!-- Main Header Start -->
-        <div class="main-header-area animated">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
-                    <!-- Classy Menu -->
-                    <nav class="classy-navbar justify-content-between" id="rehomesNav">
-
-                        <!-- Logo -->
-                        <a class="nav-brand" href="{{ url_for('home') }}">
+                    <!-- Logo -->
+                    <a class="nav-brand" href="{{ url_for('home') }}">
                         <img style="height: 48px;" src="{{ url_for('static', filename='img/core-img/evcar2.png') }}" alt="">
-                        </a>
+                    </a>
 
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- Menu Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                         </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul id="nav">
+                                <li class="active"><a href="{{ url_for('home') }}">Home</a></li>
+                                <li><a href="{{ url_for('upload_get') }}">Our System</a></li>
+                            </ul>
 
-                        <!-- Menu -->
-                        <div class="classy-menu">
-                            <!-- Menu Close Button -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            <!-- Contact btn -->
+                            <div class="contact-btn mt-3 mt-lg-0 ml-3 ml-lg-5">
+                                <a href="{{ url_for('contact') }}">Contact Us</a>
                             </div>
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul id="nav">
-                                    <li class="active"><a href="{{ url_for('home') }}">Home</a></li>
-                                    <li><a href="{{ url_for('upload_get') }}">Our System</a></li>
-                                </ul>
-
-                                <!-- Contact btn -->
-                                <div class="contact-btn mt-3 mt-lg-0 ml-3 ml-lg-5">
-                                    <a href="{{ url_for('contact') }}">Contact Us</a>
-                                </div>
-                            </div>
-                            <!-- Nav End -->
                         </div>
-                    </nav>
-                </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
             </div>
         </div>
-    </header>
-    <!-- **** Header Area End **** -->
+    </div>
+</header>
+<!-- **** Header Area End **** -->
 
-  <!--Main Navigation-->
+<!--Main Navigation-->
 
 <!--Main layout-->
 {% with messages = get_flashed_messages() %}
@@ -108,219 +105,268 @@
 
 <main class="mt-5 pt-5">
     <div class="container">
-        <form id="upload-form" action="{{ url_for('testing') }}" method="POST" enctype="multipart/form-data">
-            <strong>Upload File by Click Image Below:</strong><br>
-            <label for="file-picker">
-            <img style="width: 150px;" src="{{ url_for('static', filename='img/core-img/upload-image-icon.jpg') }}"/>
-                <a class="msg-for-file-picker" id="msg"></a>
-            </label>
-        <input border="0" scr="" style="display: none;" id="file-picker" type="file" name="file" accept="image/*">
-        <a class="msg-for-file-picker" id="msg"></a>
-        <input border="0" alt="Submit" style="width: 125px; display: inherit;" type="image" name="submit" src="{{ url_for('static', filename='img/core-img/start-icon-0.jpg') }}" value="" id="upload-button">
+        <h1>This is a system built into the EV charging station</h1>
+        <blockquote class="description">
+            <p>
+                Distinguish electric vehicles based on special marks on the plate.<br />
+                정확도 개선을 위해 특징점을 비교합니다. <br />
+                아래 버튼을 통하여 시스템을 테스트해보세요.
+            </p>
+        </blockquote>
+        <form id="upload-form" action="{{ url_for('testing') }}" method="POST" enctype="multipart/form-data", runat="server" style="padding:20px;" >
+            <span for="file-picker" class="btn btn-success fileinput-button">
+              <i class="fas fa-plus-square"></i>
+              <span>Add file...</span>
+              <input id="file-picker" type="file" name="file" accept="image/*" capture/>
+            </span>
+            {#            <!-- delete image and fadeout table-->#}
+            {#            <button type="button" class="btn btn-warning cancel" onclick="fileReset();">#}
+            {#                <i class="far fa-trash-alt"></i>#}
+            {#                <span>Cancel file</span>#}
+            {#            </button>#}
+            <a id="no_plate" style="border:none;background: unset;text-align: -webkit-center;">
+                <p style="font-size: x-large;">  Image plate is <strong style="color:orangered">wrong</strong>, Please add Car image with plate. </p>
+            </a>
+
+            <!-- Table about image informations and 2 buttons -->
+            <table id="fade_info_table" role="presentation" style="image-orientation: from-image; max-height: 100%; max-width: 100%; object-fit: contain;" class="table table-striped">
+                <tbody class="files_info">
+                <tr class="template-upload fade in">
+                    <td>
+                        <img style="image-orientation: from-image;" id="image_section" class="preview_img" src="#" alt="your image"/>
+                    </td>
+                    <td>
+                        <p id="file_name"></p>
+                        <strong id="no_plate"></strong>
+                    </td>
+                    <td>
+                        <p id="file_size"></p>
+                        <strong id="error-msg"></strong>
+                    </td>
+                    <td id="lower_30">
+                        <button type="button" class="btn btn-warning cancel" onclick="fileReset();">
+                            <i class="far fa-trash-alt"></i>
+                            <span>Cancel file</span>
+                        </button>
+                    </td>
+                    <td id="upper_30" style="max-width: 100%; object-fit: contain;">
+                        <button id="upload-button" type="submit" class="btn btn-primary start">
+                            <i class="fas fa-play"></i>
+                            <span>Start Process</span>
+                        </button>
+                        <button type="button" class="btn btn-warning cancel" onclick="fileReset();">
+                            <i class="far fa-trash-alt"></i>
+                            <span>Cancel file</span>
+                        </button>
+                    </td>
+                    <td id="loading">
+                        <img src="{{ url_for('static', filename='img/core-img/loading.gif') }}" style="width: 35px;height: 35px; object-fit: contain;" alt="animated" />
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </form>
-        <hr class="my-5">
-
-        <section class="wow fadeIn">
-
-            <div class="row text-left">
-
-                <!--Grid column-->
-                <div class="col-lg-6 col-md-12">
-
-                    <!--Original Image-->
-                    <div class="view overlay rounded z-depth-1-half mb-3">
-                        <img src=" {{ url_for('send_image', filename=image_name) }}" width="100%" height="100%">
-                        <a>
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
-                    </div>
-
-                    <!--Excerpt-->
-                    <div class="news-data">
-                        <a href="" class="light-blue-text">
-                            <h6>
-                                <i class="fas fa-car"></i>
-                                <strong> Original Image</strong>
-                            </h6>
-                        </a>
-                        <p>
-                            <strong>
-                                <i class="far fa-clock"></i> {{ start_time_data }}</strong>
-                        </p>
-                    </div>
-                    <h3>
-                        <a>
-                            <strong>Original Car Image</strong>
-                        </a>
-                    </h3>
-
-                    <!--/Featured news-->
-
-                    <!--/Small news-->
-
+        <hr class="my-3">
+        <!--Result fadeIn-->
+        <div id="result_fadeIn" class="container" style="">
+            <div class="col-12">
+                <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: fadeInUp;">
+                    <h2><span>RESULT</span></h2>
                 </div>
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <div class="col-lg-6 col-md-12">
-
-                    <!--Image-->
-                    <div class="view overlay rounded z-depth-1-half mb-3">
-                        <img src="{{url_for('static', filename='results/saved.jpg')}}" width="100%" height="100%">
-                        <h5></h5>
-                        <a>
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
-                    </div>
-
-                    <!--Excerpt-->
-                    <div class="news-data">
-                        <a href="" class="light-blue-text">
-                            <h6>
-                                <i class="fas fa-car"></i>
-                                <strong> EV Plate Processing </strong>
-                            </h6>
-                        </a>
-                        <p>
-                            <strong>
-                                <i class="far fa-clock"></i> {{ end_time_data }}</strong>
-                        </p>
-                    </div>
-                    <h3>
-                        <a>
-                            <strong>Car Type : {{ car }}</strong>
-                        </a>
-                    </h3>
-
-                    <!--/Small news-->
-
-                </div>
-                <!--Grid column-->
-
             </div>
-        </section>
+            <hr class="my-3">
+
+            <!--Result images show-->
+            <div class="row text-left">
+                <!--Result Original-->
+                <div class="col-lg-6 col-md-12" style="text-align: -webkit-center;">
+                    <div class="col-6" style="max-height: 50%;">
+                        <!-- informations about Original Image -->
+                        <div style="text-align: -webkit-center;">
+                            <h3 id="type_of_color_ori">
+                                <i id="type_of_car_ori" class="fas fa-car" style="font-size: 23px;"></i>
+                                <strong> Original Image</strong>
+                            </h3>
+                            <strong style="font-size: 17px;">
+                                <i class="far fa-clock"></i> {{ start_time_data }}
+                            </strong>
+                        </div>
+                    </div>
+                    <!--Original Image Upload-->
+                    <div class="view overlay rounded z-depth-1-half mb-3" style="width: 100%; height:80%; text-align: center;">
+                        <img src=" {{ url_for('send_image', filename=image_name) }}" style="image-orientation:from-image; max-width: 80%; max-height: 100%;" >
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                </div>
+                <!--PLATE RESULT DIV-->
+                <div class="col-lg-6 col-md-12" style="text-align: -webkit-center;">
+                    <div class="col-6" style="max-height: 50%;">
+                        <!-- informations about Plate Image -->
+                        <div style="text-align: -webkit-center;">
+                            <h3 id="type_of_color_plate">
+                                <i id="type_of_car_plate" class="fas fa-car"  style="font-size: 23px;"></i>
+                                <strong> {{ car }}</strong>
+                            </h3>
+                            <strong style="font-size: 17px;">
+                                <i class="far fa-clock"></i> {{ end_time_data }}
+                            </strong>
+                        </div>
+                    </div><!-- col-6 close-->
+                    <!-- Plate Image Upload -->
+                    <div class="view overlay rounded z-depth-1-half mb-3" style="width: 100%; height: 80%; text-align: center;">
+                        <img src="{{url_for('static', filename='results/saved.jpg')}}" style="max-width: 100%;">
+                        <h3>
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </h3>
+                    </div>
+
+                </div><!--PLATE RESULT DIV CLOSE-->
+            </div>
+        </div> <!-- close result_fadein div -->
+    </div>
+    <div class="panel panel-default" style="padding:10px; margin:50px 0px 30px 0px; font-size:20px;">
+        <div class="panel-heading">
+            <h3 class="panel-title">Using Notes</h3>
+        </div>
+        <div class="panel-body">
+            <ul>
+                <li>
+                    The maximum file size for uploads is
+                    <strong>5 MB</strong>. Uploading a large file slows down the result.
+                </li>
+                <li>
+                    Only image files (<strong>JPG, PNG</strong>) are allowed in
+                    this System.
+                </li>
+            </ul>
+        </div>
+    </div>
     </div>
 </main>
 
-    <!-- **** Footer Area Start **** -->
-    <footer class="footer-area bg-img bg-overlay-2 section-padding-100-0"
+<!-- **** Footer Area Start **** -->
+<footer class="footer-area bg-img bg-overlay-2 section-padding-100-0"
         style="background-image: url( {{ url_for('static', filename='img/bg-img/17.jpg') }} );">
-        <!-- Main Footer Area -->
-        <div class="main-footer-area">
-            <div class="container">
-                <div class="row justify-content-between">
+    <!-- Main Footer Area -->
+    <div class="main-footer-area">
+        <div class="container">
+            <div class="row justify-content-between">
 
-                    <!-- Footer Widget Area -->
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="single-footer-widget mb-80">
-                            <!-- Footer Logo -->
-                            <a href="#" class="footer-logo"><img style="max-width: 80%;" src="{{ url_for('static', filename='img/core-img/evcar.png') }}" alt=""></a>
-                            <!-- Social Info -->
-                            <div class="social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
+                <!-- Footer Widget Area -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Footer Logo -->
+                        <a href="#" class="footer-logo"><img style="max-width: 80%;" src="{{ url_for('static', filename='img/core-img/evcar.png') }}" alt=""></a>
+                        <!-- Social Info -->
+                        <div class="social-info">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Footer Widget Area -->
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="single-footer-widget mb-80">
-                            <!-- Widget Title -->
-                            <h5 class="widget-title">Our info</h5>
+                <!-- Footer Widget Area -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Widget Title -->
+                        <h5 class="widget-title">Our info</h5>
 
-                            <!-- Contact Area -->
-                            <div class="footer-contact">
-                                <p>Phone: <span>(+82) XX XXXX XXXX</span></p>
-                                <p>Email: <span>XXXXXXXXX@gmail.com</span></p>
-                                <p>Address: <span>Sejong Universtiy, Seoul</span></p>
-                            </div>
+                        <!-- Contact Area -->
+                        <div class="footer-contact">
+                            <p>Phone: <span>(+82) XX XXXX XXXX</span></p>
+                            <p>Email: <span>XXXXXXXXX@gmail.com</span></p>
+                            <p>Address: <span>Sejong Universtiy, Seoul</span></p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Footer Widget Area -->
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="single-footer-widget mb-80">
-                            <!-- Widget Title -->
-                            <h5 class="widget-title">Main Cities</h5>
+                <!-- Footer Widget Area -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Widget Title -->
+                        <h5 class="widget-title">Main Cities</h5>
 
-                            <!-- Footer Nav -->
-                            <ul class="footer-nav d-flex flex-wrap">
-                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Seoul</a></li>
-                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Busan</a></li>
-                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Incheon</a></li>
-                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Daegu</a></li>
-                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Gwangju</a></li>
-                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Daejeon</a></li>
-                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Ulsan</a></li>
-                                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Jeju</a></li>
-                            </ul>
-                        </div>
+                        <!-- Footer Nav -->
+                        <ul class="footer-nav d-flex flex-wrap">
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Seoul</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Busan</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Incheon</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Daegu</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Gwangju</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Daejeon</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Ulsan</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Jeju</a></li>
+                        </ul>
                     </div>
+                </div>
 
-                    <!-- Footer Widget Area -->
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="single-footer-widget mb-80">
-                            <!-- Widget Title -->
-                            <h5 class="widget-title">Q & A</h5>
+                <!-- Footer Widget Area -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Widget Title -->
+                        <h5 class="widget-title">Q & A</h5>
 
-                            <p>If you wonder about Our system, You can ask via email.</p>
-                            <!-- Newsletter Form -->
-                            <form action="{{ url_for('home') }}" class="nl-form">
-                                <input type="email" name="nl-email" class="form-control"
-                                    placeholder="Enter your email...">
-                                <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                            </form>
-                        </div>
+                        <p>If you wonder about Our system, You can ask via email.</p>
+                        <!-- Newsletter Form -->
+                        <form action="{{ url_for('home') }}" class="nl-form">
+                            <input type="email" name="nl-email" class="form-control"
+                                   placeholder="Enter your email...">
+                            <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Copywrite Area -->
-        <div class="copywrite-content">
-            <div class="container">
-                <div class="row align-items-center">
-                    <!-- Copywrite Text -->
-                    <div class="col-12 col-sm-6">
-                        <div class="copywrite-text">
-                            <p>
-                                Copyright &copy;
-                                <script>document.write(new Date().getFullYear());</script> View all stations closest to
-                                you
-                            </p>
-                        </div>
+    <!-- Copywrite Area -->
+    <div class="copywrite-content">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Copywrite Text -->
+                <div class="col-12 col-sm-6">
+                    <div class="copywrite-text">
+                        <p>
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> View all stations closest to
+                            you
+                        </p>
                     </div>
+                </div>
 
-                    <!-- Footer Menu -->
-                    <div class="col-12 col-sm-6">
-                        <div class="footer-menu">
-                            <ul class="nav">
-                                <li><a href="{{ url_for('home') }}">Home</a></li>
-                                <li><a href="{{ url_for('upload_get') }}">Our System</a></li>
-                                <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
-                            </ul>
-                        </div>
+                <!-- Footer Menu -->
+                <div class="col-12 col-sm-6">
+                    <div class="footer-menu">
+                        <ul class="nav">
+                            <li><a href="{{ url_for('home') }}">Home</a></li>
+                            <li><a href="{{ url_for('upload_get') }}">Our System</a></li>
+                            <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
-    <!-- **** Footer Area End **** -->
+    </div>
+</footer>
+<!-- **** Footer Area End **** -->
 
-    <!-- **** All JS Files ***** -->
-    <!-- jQuery 2.2.4 -->
-    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
-    <!-- Popper -->
-    <script src="{{ url_for('static',filename='js/popper.min.js') }}"></script>
-    <!-- Bootstrap -->
-    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
-    <!-- All Plugins -->
-    <script src="{{ url_for('static',filename='js/rehomes.bundle.js') }}"></script>
-    <!-- Active -->
-    <script src="{{ url_for('static',filename='js/default-assets/active.js') }}"></script>
+<!-- **** All JS Files ***** -->
+<!-- jQuery 2.2.4 -->
+<script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+<!-- Popper -->
+<script src="{{ url_for('static',filename='js/popper.min.js') }}"></script>
+<!-- Bootstrap -->
+<script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+<!-- All Plugins -->
+<script src="{{ url_for('static',filename='js/rehomes.bundle.js') }}"></script>
+<!-- Active -->
+<script src="{{ url_for('static',filename='js/default-assets/active.js') }}"></script>
 
 <!-- Initializations -->
 <script type="text/javascript">
@@ -330,38 +376,164 @@
 </script>
 </body>
 <script>
-
-    $("#file-picker").change(function(){
+    $("#file-picker").change(function () {
         var input = document.getElementById('file-picker');
-        for (var i=0; i<input.files.length; i++)
-        {
-        //koala.jpg, koala.JPG substring(index) lastIndexOf('a') koala.1.jpg
-            var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
-            if ((ext == 'jpg') || (ext == 'png'))
-            {
-                $("#msg").text("CLICK GREEN BUTTON BELOW")
+        for (var i = 0; i < input.files.length; i++) {
+            //koala.jpg, koala.JPG substring(index) lastIndexOf('a') koala.1.jpg
+            var ext = input.files[i].name.substring(input.files[i].name.lastIndexOf('.') + 1).toLowerCase()
+            if ((ext == 'jpg') || (ext == 'png')) {
+                {#$("#msg").text("CLICK GREEN BUTTON BELOW")#}
                 if (input.files[i].size < 30720) {
-                     $("#msg").text("File Size is too low (Minimum 30KB)")
-                    document.getElementById("file-picker").value ="";
-                     $("#upload-button").hide()
-                } else {
-                    $("#upload-button").show()
+                    $("#upload-button").hide();
+                    $("#lower_30").show();
+                    $("#upper_30").hide();
+                    document.getElementById("file_name").innerHTML = input.files[i].name;
+                    document.getElementById("file_size").innerHTML = (input.files[i].size / 1024).toFixed(2) + ' KB';
+                    $("#error-msg").text("Image Size is too low (Minimum 30KB)");
+                    {#document.getElementById("file-picker").value = "";#}
+
+                }
+                else {
+                    if (input.files[i].size > 1048576) {
+                        document.getElementById("file_name").innerHTML = input.files[i].name
+                        document.getElementById("file_size").innerHTML = (input.files[i].size /(1024 *1024)).toFixed(2) + ' MB';
+                    }
+                    else {
+                        document.getElementById("file_name").innerHTML = input.files[i].name
+                        document.getElementById("file_size").innerHTML = (input.files[i].size / 1024).toFixed(2) + ' KB';
+
+                    }
+                    $("#upper_30").show();
+                    $("#lower_30").hide();
+                    $("#upload-button").show();
+                    $("#error-msg").text("Image Size is enough to process");
                 }
             }
             else {
-                $("#msg").text("CLICK GREEN BUTTON BELOW")
-                document.getElementById("file-picker").value ="";
-                $("#upload-button").hide()
+                document.getElementById("file-picker").value = "";
+                $("#upload-button").hide();
             }
+            $("#fade_info_table").show();
         }
-    } );
+    });
 
-    $("#upload-form").submit(function() {
-        $('#preloader').show(function () {
+
+
+    $("#upload-form").submit(function () {
+        $('#loading').show(function () {
             $(this).fadeIn('1000');
         });
     });
 
-    $("#upload-button").hide()
+    function fileReset() {
+        document.getElementById("file-picker").value ="";
+        $("#upload-button").hide();
+        $("#fade_info_table").hide()
+        $("#result_fadeIn").hide();
+    };
+
+
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#image_section').attr('src', e.target.result);
+            }
+
+            reader.onloadend = function() {
+
+                var exif = EXIF.readFromBinaryFile(new BinaryFile(this.result));
+
+                switch(exif.Orientation){
+
+                    case 2:
+                        // horizontal flip
+                        ctx.translate(canvas.width, 0);
+                        ctx.scale(-1, 1);
+                        break;
+                    case 3:
+                        // 180° rotate left
+                        ctx.translate(canvas.width, canvas.height);
+                        ctx.rotate(Math.PI);
+                        break;
+                    case 4:
+                        // vertical flip
+                        ctx.translate(0, canvas.height);
+                        ctx.scale(1, -1);
+                        break;
+                    case 5:
+                        // vertical flip + 90 rotate right
+                        ctx.rotate(0.5 * Math.PI);
+                        ctx.scale(1, -1);
+                        break;
+                    case 6:
+                        // 90° rotate right
+                        ctx.rotate(0.5 * Math.PI);
+                        ctx.translate(0, -canvas.height);
+                        break;
+                    case 7:
+                        // horizontal flip + 90 rotate right
+                        ctx.rotate(0.5 * Math.PI);
+                        ctx.translate(canvas.width, -canvas.height);
+                        ctx.scale(-1, 1);
+                        break;
+                    case 8:
+                        // 90° rotate left
+                        ctx.rotate(-0.5 * Math.PI);
+                        ctx.translate(-canvas.width, 0);
+                        break;
+
+
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#file-picker").change(function(){
+            readURL(this);
+        });
+
+        $("#loading").hide();
+        $("#lower_30").hide();
+        $("#upper_30").hide();
+        $("#upload-button").hide();
+        $("#fade_info_table").hide();
+        $("#result_fadeIn").hide();
+
+        var plate_type = "{{ car }}";
+
+        if (plate_type == "General Vehicle") {
+            document.getElementById("type_of_color_ori").style.color = 'dimgrey';
+            document.getElementById("type_of_color_plate").style.color = 'dimgrey'
+        } else {
+            document.getElementById("type_of_color_ori").style.color = 'dodgerblue';
+            document.getElementById("type_of_color_plate").style.color = 'dodgerblue';
+            document.getElementById("type_of_car_ori").className = "fas fa-charging-station";
+            document.getElementById("type_of_car_plate").className = "fas fa-charging-station"
+        };
+
+
+        var status = "{{ status }}";
+        console.log(status);
+
+        if (status==1) {
+            $("#no_plate").hide();
+            {#$("#result_fadeIn").style.display='';#}
+            document.getElementById("result_fadeIn").style.display = 'block';
+            $("#fade_info_table").style.display='';
+            document.getElementById("fade_info_table").style.display = 'none';
+            {#$("#loading").hide();#}
+            document.getElementById("loading").style.display = 'none';
+        }
+        else {
+            $("#no_plate").show();
+            $("#result_fadeIn").hide();
+        };
+
+
+
+
 </script>
 </html>

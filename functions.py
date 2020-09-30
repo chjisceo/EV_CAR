@@ -18,7 +18,11 @@ def crop_plate_img(binary_image,img):
     url = 'https://api.openalpr.com/v2/recognize_bytes?recognize_vehicle=1&country=kor&secret_key=%s' % (SECRET_KEY)
     r = requests.post(url, data=img_base64)
     json_data = r.json()
-    x1_co = json_data['results'][0]['coordinates'][0]['x']
+
+    try:
+        x1_co = json_data['results'][0]['coordinates'][0]['x']
+    except:
+        return False
     y1_co = json_data['results'][0]['coordinates'][0]['y']
     x2_co = json_data['results'][0]['coordinates'][2]['x']
     y2_co = json_data['results'][0]['coordinates'][2]['y']
@@ -54,7 +58,6 @@ def is_image_valid(image_path):
     # if image size is smaller than 300KB, print this
     if KB < 30:
         result = "이미지 크기가 {}KB 입니다. 높은 화질의 이미지를 올려주세요.".format(KB)
-        print(result)
         return False
     return True
 

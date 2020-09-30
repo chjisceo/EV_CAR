@@ -77,25 +77,47 @@ def testing():
         print ("Save it to:", destination)
         upload.save(destination)
 
+
     start = datetime.now()
     start_time_data = time.strftime("%Y/%m/%d %H:%M:%S")
 
     # image_path = 'images/taxi2.jpg'
     image_path = 'images/' + filename
     img = cv2.imread(image_path)
+
+    # try:
+    #     for orientation in ExifTags.TAGS.keys():
+    #         if ExifTags.TAGS[orientation] == 'Orientation':
+    #             break
+    #     exif = dict(img._getexif().items())
+    #
+    #     if exif[orientation] == 3:
+    #         img = img.rotate(180, expand=True)
+    #     elif exif[orientation] == 6:
+    #         img = img.rotate(270, expand=True)
+    #     elif exif[orientation] == 8:
+    #         img = img.rotate(90, expand=True)
+    #
+    # except (AttributeError, KeyError, IndexError):
+    #     # cases: image don't have getexif
+    #     pass
+
+
     single_template = cv2.imread('static/img/template-img/single.png')
     double_template = cv2.imread('static/img/template-img/double.png')
     feature_template = cv2.imread('static/img/template-img/feature.png')
     is_ev_car = 0
     is_general_car = 0
     cropped_plate_img = None
-
+    valid_crop = 1
     with open(image_path, 'rb') as binary_image:
         cropped_plate_img = func.crop_plate_img(binary_image.read(), img)
 
-    if cropped_plate_img is None:
-        print('Error while cropping plate img')
-        return
+
+    if cropped_plate_img is False:
+        valid_crop = 0
+        print('Error while cropping plate img',valid_crop)
+        return render_template("complete_test.html", status=valid_crop)
     #gray_plate_img = cv2.cvtColor(cropped_plate_img, cv2.COLOR_BGR2GRAY)
 
     # Template Matching plate with one small evcar shape image
@@ -112,7 +134,7 @@ def testing():
         print('no EV car (logos not matching)')
     else:
         is_ev_car += 1
-
+        print('EV car (logos matched)')
     # draw rectangle in Original image
     first_img = single_template_matching.draw_rectangle()
     second_img = double_template_matching.draw_rectangle(first_img)
@@ -126,7 +148,7 @@ def testing():
         print('no EV car (no feature matching detected)')
     else:
         is_ev_car += 1 # if there are some points, plus 1 point
-
+        print('EV car (feature matched) : {}'.format( feature_template_matching.find_points() ))
     # Detect which color of plate
     # if it is True : is_ev_car, else is_general_car
     color_of_plate = func.detect_plate_color(cropped_plate_img)
@@ -135,7 +157,7 @@ def testing():
     else:
         is_ev_car += 1
 
-    print("is_general_car : {}\nis_ev_car : {}".format(is_general_car, is_ev_car))
+    print("is_general_vehicle_points : {}\nis_eletronic_vehicle_points : {}".format(is_general_car, is_ev_car))
     if is_ev_car >= 2:
         car_type = 'Electronic Vehicle'
         feature_point_img = feature_template_matching.draw_feature_points()
@@ -159,7 +181,7 @@ def testing():
     end_time_data = time.strftime("%Y/%m/%d %H:%M:%S")
     print(processing)
 
-    return render_template("complete.html", image_name=filename, car=car_type, processing=processing, result_img=result_plate_img, start_time_data=start_time_data, end_time_data=end_time_data)
+    return render_template("complete_test.html", status=valid_crop, image_name=filename, car=car_type, processing=processing, result_img=result_plate_img, start_time_data=start_time_data, end_time_data=end_time_data)
 
     # cv2.imshow('Original Image', img)
     # cv2.imshow('output', result_plate_img)

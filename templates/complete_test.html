@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="no-store">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>전기차충전소: Testing</title>
+    <style>
+        @media (max-width: 767px) {
+            .description {
+                display: none;
+            }
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+        }
+    </style>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='img/core-img/favicon.png') }}">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename= 'main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename= 'css/style.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+</head>
+
+<body>
+
+<!-- **** Header Area Start **** -->
+<header class="header-area">
+    <!-- Top Header Area Start -->
+    <div class="top-header-area">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-6">
+                    <div class="top-header-content">
+                        <a href="#"><i class="icon_mail"></i> <span>XXXXXX@gmail.com</span></a>
+                        <a href="#"><i class="icon_phone"></i> <span>(+82) 10 XXXX XXXX</span></a>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="top-header-content">
+                        <!-- Top Social Area -->
+                        <div class="top-social-area ml-auto">
+                            <a href="https://map.naver.com/v5/"><img src="{{ url_for('static', filename='img/core-img/navermap1.png') }}" alt="Naver_map" width="30" height="30"></a>
+                            <a href="https://map.kakao.com/"><img src="{{ url_for('static', filename='img/core-img/kakaomap.png') }}" alt="Kakao_map" width="30" height="30"></a>
+                            <a href="https://www.google.com/maps/"><img src="{{ url_for('static', filename='img/core-img/google.jpeg') }}" alt="google_map" width="30" height="30"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Top Header Area End -->
+
+    <!-- Main Header Start -->
+    <div class="main-header-area animated">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="rehomesNav">
+
+                    <!-- Logo -->
+                    <a class="nav-brand" href="{{ url_for('home') }}">
+                        <img style="height: 48px;" src="{{ url_for('static', filename='img/core-img/evcar2.png') }}" alt="">
+                    </a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- Menu Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul id="nav">
+                                <li class="active"><a href="{{ url_for('home') }}">Home</a></li>
+                                <li><a href="{{ url_for('upload_get') }}">Our System</a></li>
+                            </ul>
+
+                            <!-- Contact btn -->
+                            <div class="contact-btn mt-3 mt-lg-0 ml-3 ml-lg-5">
+                                <a href="{{ url_for('contact') }}">Contact Us</a>
+                            </div>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- **** Header Area End **** -->
+
+<!--Main Navigation-->
+
+<!--Main layout-->
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <!-- Do something with the message -->
+            <h4>{{ message }}</h4>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<main class="mt-5 pt-5">
+    <div class="container">
+        <div class="panel panel-default" style="max-height: 100%; max-width: 100%; object-fit: contain; padding:10px; margin:50px 0px 30px 0px; font-size:20px;">
+            <div class="panel-heading">
+                <h2 class="panel-title" style="font-size: 30px;">How to Use ?</h2>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>
+                        If you want to have test your image file. Please Add image file via <strong><span style="border: 2px solid #92c800; color: #92c800;">　Add file　</span></strong> Button. <br />
+                    </li>
+                    <li>	　</li>
+                    <li>
+                        The maximum file size for uploads is
+                        <strong>5 MB</strong>( Uploading a large  size of image slows down the result. )
+                    </li>
+                    <li>	　</li>
+                    <li>
+                        Only image files (<strong>JPG, PNG</strong>) are allowed in this System.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <form id="upload-form" action="{{ url_for('testing') }}" method="POST" enctype="multipart/form-data", runat="server" style="padding:20px;" >
+            <span for="file-picker" class="btn btn-success fileinput-button">
+              <i class="fas fa-plus-square"></i>
+              <span>Add file...</span>
+              <input id="file-picker" type="file" name="file" accept="image/*" onclick="fileReset()" capture/>
+            </span>
+            {#            <!-- delete image and fadeout table-->#}
+            {#            <button type="button" class="btn btn-warning cancel" onclick="fileReset();">#}
+            {#                <i class="far fa-trash-alt"></i>#}
+            {#                <span>Cancel file</span>#}
+            {#            </button>#}
+            <a id="error_plate" style="border:none;background: unset;text-align: -webkit-center;">
+                <p id="error_plate" style="font-size: x-large;">  Image plate is <strong style="color:orangered">wrong</strong>, Please add Car image with plate. </p>
+            </a>
+
+            <!-- Table about image informations and 2 buttons -->
+            <table id="fade_info_table" role="presentation" style="margin-top:20px; image-orientation: from-image; max-height: 100%; max-width: 100%; object-fit: contain;" class="table table-striped">
+                <tbody class="files_info">
+                <tr class="template-upload fade in">
+                    <td>
+                        <img style="display:none; image-orientation: from-image;" id="image_section" class="preview_img" src="#" alt="your image"/>
+                        <canvas class="preview_img" id="canvas_img"></canvas>
+                    </td>
+                    <td>
+                        <p id="file_name"></p>
+                        <strong id="no_plate"></strong>
+                    </td>
+                    <td>
+                        <p id="file_size"></p>
+                        <strong id="error-msg"></strong>
+                    </td>
+                    <td id="loading">
+                        <img src="{{ url_for('static', filename='img/core-img/loading.gif') }}" style="width: 35px;height: 35px; object-fit: contain;" alt="animated" />
+                    </td>
+                    <td id="lower_30">
+                        <button type="button" class="btn btn-warning cancel" onclick="fileReset();">
+                            <i class="far fa-trash-alt"></i>
+                            <span>Cancel file</span>
+                        </button>
+                    </td>
+                    <td id="upper_30" style="max-width: 100%; object-fit: contain;">
+                        <button id="upload-button" type="submit" class="btn btn-primary start">
+                            <i class="fas fa-play"></i>
+                            <span>Start Process</span>
+                        </button>
+                        <button type="button" class="btn btn-warning cancel" onclick="fileReset();">
+                            <i class="far fa-trash-alt"></i>
+                            <span>Cancel file</span>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+        <hr class="my-3">
+        <!--Result fadeIn-->
+        <div id="result_fadeIn" class="container" style="">
+            <div class="col-12">
+                <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: fadeInUp;">
+                    <h2><span>RESULT</span></h2>
+                </div>
+            </div>
+            <hr class="my-3">
+
+            <!--Result images show-->
+            <div class="row text-left">
+                <!--Result Original-->
+                <div class="col-lg-6 col-md-12" style="text-align: -webkit-center;">
+                    <div class="col-6" style="max-height: 50%;">
+                        <!-- informations about Original Image -->
+                        <div style="text-align: -webkit-center;">
+                            <h3 id="type_of_color_ori">
+                                <i id="type_of_car_ori" class="fas fa-car" style="font-size: 23px;"></i>
+                                <strong> Original Image</strong>
+                            </h3>
+                            <strong style="font-size: 17px;">
+                                <i class="far fa-clock"></i> {{ start_time_data }}
+                            </strong>
+                        </div>
+                    </div>
+                    <!--Original Image Upload-->
+                    <div class="view overlay rounded z-depth-1-half mb-3" style="width: 100%; height:80%; text-align: center;">
+                        <img src=" {{ url_for('send_image', filename=image_name) }}" style="image-orientation:from-image; max-width: 80%; max-height: 100%;" >
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                </div>
+                <!--PLATE RESULT DIV-->
+                <div class="col-lg-6 col-md-12" style="text-align: -webkit-center;">
+                    <div class="col-6" style="max-height: 50%;">
+                        <!-- informations about Plate Image -->
+                        <div style="text-align: -webkit-center;">
+                            <h3 id="type_of_color_plate">
+                                <i id="type_of_car_plate" class="fas fa-car"  style="font-size: 23px;"></i>
+                                <strong> {{ car }}</strong>
+                            </h3>
+                            <strong style="font-size: 17px;">
+                                <i class="far fa-clock"></i> {{ end_time_data }}
+                            </strong>
+                        </div>
+                    </div><!-- col-6 close-->
+                    <!-- Plate Image Upload -->
+                    <div class="view overlay rounded z-depth-1-half mb-3" style="width: 100%; height: 80%; text-align: center;">
+                        <img src="{{url_for('static', filename='results/saved.jpg')}}" style="max-width: 100%;">
+                        <h3>
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </h3>
+                    </div>
+
+                </div><!--PLATE RESULT DIV CLOSE-->
+            </div>
+        </div> <!-- close result_fadein div -->
+    </div>
+    <!-- **** System part and Functions part Area Start **** -->
+    <section class="rehomes-categories-property-area section-padding-100-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center wow fadeInUp" data-wow-delay="200ms">
+                        <h2><span>Systems</span> We Used</h2>
+                    </div>
+                </div>
+
+                <!-- OpenAlpr Content -->
+                <div class="col-12 col-md-4">
+                    <div class="single-categories-property-area bg-gradient-overlay wow fadeInUp"
+                         data-wow-delay="200ms">
+                        <!-- Property Thumb -->
+                        <div class="property-thumb">
+                            <a href="#"><img style="height:320px;" src="{{ url_for('static', filename='img/bg-img/openalpr.png') }}" alt=""></a>
+                        </div>
+                        <!-- Title -->
+                        <a class="system-support-title" href="#">Import : OpenALPR</a>
+                        <!-- what for -->
+                        <div class="property-name-price-text">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Python Flask content -->
+                <div class="col-12 col-md-4">
+                    <div class="single-categories-property-area bg-gradient-overlay wow fadeInUp"
+                         data-wow-delay="200ms">
+                        <!-- Property Thumb -->
+                        <div class="property-thumb">
+                            <a href="#"><img style="height:320px;" src="{{ url_for('static', filename='img/bg-img/flask.png') }}" alt=""></a>
+                        </div>
+                        <!-- Title -->
+                        <a class="system-support-title" href="#">Python : Flask</a>
+                        <!-- what it is -->
+                        <div class="property-name-price-text">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- heroku Content -->
+                <div class="col-12 col-md-4">
+                    <div class="single-categories-property-area bg-gradient-overlay wow fadeInUp"
+                         data-wow-delay="200ms">
+                        <!-- Property Thumb -->
+                        <div class="property-thumb">
+                            <a href="#"><img style="height:320px;" src="{{ url_for('static', filename='img/bg-img/heroku-logo.jpg') }}" alt=""></a>
+                        </div>
+                        <!-- Title -->
+                        <a class="system-support-title" href="#">Web: Heroku</a>
+                        <!-- what it is -->
+                        <div class="property-name-price-text">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Functions in Python -->
+                <div class="col-12">
+                    <div class="section-heading text-center wow fadeInUp" data-wow-delay="200ms">
+                        <h2><span>Functions</span> from Python</h2>
+                    </div>
+                </div>
+
+                <!-- Template matching Content -->
+                <div class="col-12 col-md-4">
+                    <div class="single-categories-property-area bg-gradient-overlay wow fadeInUp"
+                         data-wow-delay="200ms">
+                        <!-- Property Thumb -->
+                        <div class="property-thumb">
+                            <a href="#"><img style="height:220px;" src="{{ url_for('static', filename='img/bg-img/template-matching.PNG') }}" alt=""></a>
+                        </div>
+                        <!-- Title -->
+                        <a class="system-support-title" href="#">Template Matching</a>
+                        <!-- Property Name and Price -->
+                        <div class="property-name-price-text">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Matching Content -->
+                <div class="col-12 col-md-4">
+                    <div class="single-categories-property-area bg-gradient-overlay wow fadeInUp"
+                         data-wow-delay="200ms">
+                        <!-- Property Thumb -->
+                        <div class="property-thumb">
+                            <a href="#"><img style="height:220px;" src="{{ url_for('static', filename='img/bg-img/feature.PNG') }}" alt=""></a>
+                        </div>
+                        <!-- Title -->
+                        <a class="system-support-title" href="#">Feature Matching</a>
+                        <!-- Property Name and Price -->
+                        <div class="property-name-price-text">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plate check by color Content -->
+                <div class="col-12 col-md-4">
+                    <div class="single-categories-property-area bg-gradient-overlay wow fadeInUp"
+                         data-wow-delay="200ms">
+                        <!-- Property Thumb -->
+                        <div class="property-thumb">
+                            <a href="#"><img style="height:220px;" src="{{ url_for('static', filename='img/bg-img/color-check.png') }}" alt=""></a>
+                        </div>
+                        <!-- Title -->
+                        <a class="system-support-title" href="#">Color</a>
+                        <!-- Property Name and Price -->
+                        <div class="property-name-price-text">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- **** Systems and functions part Area End **** -->
+</main>
+
+<!-- **** Footer Area Start **** -->
+<footer class="footer-area bg-img bg-overlay-2 section-padding-100-0"
+        style="background-image: url( {{ url_for('static', filename='img/bg-img/17.jpg') }} );">
+    <!-- Main Footer Area -->
+    <div class="main-footer-area">
+        <div class="container">
+            <div class="row justify-content-between">
+
+                <!-- Footer Widget Area -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Footer Logo -->
+                        <a href="#" class="footer-logo"><img style="max-width: 80%;" src="{{ url_for('static', filename='img/core-img/evcar.png') }}" alt=""></a>
+                        <!-- Social Info -->
+                        <div class="social-info">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Widget Area -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Widget Title -->
+                        <h5 class="widget-title">Our info</h5>
+
+                        <!-- Contact Area -->
+                        <div class="footer-contact">
+                            <p>Phone: <span>(+82) XX XXXX XXXX</span></p>
+                            <p>Email: <span>XXXXXXXXX@gmail.com</span></p>
+                            <p>Address: <span>Sejong Universtiy, Seoul</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Widget Area -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Widget Title -->
+                        <h5 class="widget-title">Main Cities</h5>
+
+                        <!-- Footer Nav -->
+                        <ul class="footer-nav d-flex flex-wrap">
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Seoul</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Busan</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Incheon</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Daegu</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Gwangju</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Daejeon</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Ulsan</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Jeju</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Footer Widget Area -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Widget Title -->
+                        <h5 class="widget-title">Q & A</h5>
+
+                        <p>If you wonder about Our system, You can ask via email.</p>
+                        <!-- Newsletter Form -->
+                        <form action="{{ url_for('home') }}" class="nl-form">
+                            <input type="email" name="nl-email" class="form-control"
+                                   placeholder="Enter your email...">
+                            <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copywrite Area -->
+    <div class="copywrite-content">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Copywrite Text -->
+                <div class="col-12 col-sm-6">
+                    <div class="copywrite-text">
+                        <p>
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> View all stations closest to
+                            you
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer Menu -->
+                <div class="col-12 col-sm-6">
+                    <div class="footer-menu">
+                        <ul class="nav">
+                            <li><a href="{{ url_for('home') }}">Home</a></li>
+                            <li><a href="{{ url_for('upload_get') }}">Our System</a></li>
+                            <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- **** Footer Area End **** -->
+
+<!-- **** All JS Files ***** -->
+<!-- jQuery 2.2.4 -->
+<script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+<!-- Popper -->
+<script src="{{ url_for('static',filename='js/popper.min.js') }}"></script>
+<!-- Bootstrap -->
+<script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+<!-- All Plugins -->
+<script src="{{ url_for('static',filename='js/rehomes.bundle.js') }}"></script>
+<!-- Active -->
+<script src="{{ url_for('static',filename='js/default-assets/active.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+<!-- Initializations -->
+<script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+
+</script>
+</body>
+<script>
+    $("#file-picker").change(function () {
+        var input = document.getElementById('file-picker');
+        for (var i = 0; i < input.files.length; i++) {
+            //koala.jpg, koala.JPG substring(index) lastIndexOf('a') koala.1.jpg
+            var ext = input.files[i].name.substring(input.files[i].name.lastIndexOf('.') + 1).toLowerCase()
+            if ((ext == 'jpg') || (ext == 'png')) {
+                {#$("#msg").text("CLICK GREEN BUTTON BELOW")#}
+                if (input.files[i].size < 30720) {
+                    $("#upload-button").hide();
+                    $("#lower_30").show();
+                    $("#upper_30").hide();
+                    document.getElementById("file_name").innerHTML = input.files[i].name;
+                    document.getElementById("file_size").innerHTML = (input.files[i].size / 1024).toFixed(2) + ' KB';
+                    $("#error-msg").text("Image Size is too low (Minimum 30KB)");
+                    {#document.getElementById("file-picker").value = "";#}
+
+                }
+                else {
+                    if (input.files[i].size > 1048576) {
+                        document.getElementById("file_name").innerHTML = input.files[i].name
+                        document.getElementById("file_size").innerHTML = (input.files[i].size /(1024 *1024)).toFixed(2) + ' MB';
+                    }
+                    else {
+                        document.getElementById("file_name").innerHTML = input.files[i].name
+                        document.getElementById("file_size").innerHTML = (input.files[i].size / 1024).toFixed(2) + ' KB';
+
+                    }
+                    $("#upper_30").show();
+                    $("#lower_30").hide();
+                    $("#upload-button").show();
+                    $("#error-msg").text("Image Size is enough to process");
+                }
+            }
+            else {
+                document.getElementById("file-picker").value = "";
+                $("#upload-button").hide();
+            }
+            $("#fade_info_table").show();
+        }
+    });
+
+
+
+    $("#upload-form").submit(function () {
+        $('#loading').show(function () {
+            $(this).fadeIn('1000');
+        });
+    });
+
+    function fileReset() {
+        document.getElementById("file-picker").value ="";
+        $("#upload-button").hide();
+        $("#fade_info_table").hide()
+        $("#result_fadeIn").hide();
+        $("#error_plate").hide();
+    };
+
+
+    {#function getOrientation(file, callback) {#}
+    {#    var reader = new FileReader();#}
+    {##}
+    {#    reader.onload = function(event) {#}
+    {#        var view = new DataView(event.target.result);#}
+    {##}
+    {#        if (view.getUint16(0, false) != 0xFFD8) return callback(-2);#}
+    {##}
+    {#        var length = view.byteLength,#}
+    {#            offset = 2;#}
+    {##}
+    {#        while (offset < length) {#}
+    {#            var marker = view.getUint16(offset, false);#}
+    {#            offset += 2;#}
+    {##}
+    {#            if (marker == 0xFFE1) {#}
+    {#                if (view.getUint32(offset += 2, false) != 0x45786966) {#}
+    {#                    return callback(-1);#}
+    {#                }#}
+    {#                var little = view.getUint16(offset += 6, false) == 0x4949;#}
+    {#                offset += view.getUint32(offset + 4, little);#}
+    {#                var tags = view.getUint16(offset, little);#}
+    {#                offset += 2;#}
+    {##}
+    {#                for (var i = 0; i < tags; i++)#}
+    {#                    if (view.getUint16(offset + (i * 12), little) == 0x0112)#}
+    {#                        return callback(view.getUint16(offset + (i * 12) + 8, little));#}
+    {#            }#}
+    {#            else if ((marker & 0xFF00) != 0xFF00) break;#}
+    {#            else offset += view.getUint16(offset, false);#}
+    {#        }#}
+    {#        return callback(-1);#}
+    {#    };#}
+    {##}
+    {#    reader.readAsArrayBuffer(file);#}
+    {#};#}
+
+        var fileInput = document.getElementById("file-picker");
+
+        fileInput.onchange = function(event) {
+            var file = event.target.files[0];
+
+            EXIF.getData(file, function () {
+                var orientation = EXIF.getTag(this, "Orientation");
+                var can = document.querySelector("#canvas_img");
+                var ctx = can.getContext('2d');
+                var thisImage = new Image;
+
+                thisImage.onload = function () {
+                    can.width = thisImage.width;
+                    can.height = thisImage.height;
+                    ctx.save();
+                    var width = can.width;
+                    var styleWidth = can.style.width;
+                    var height = can.height;
+                    var styleHeight = can.style.height;
+                    if (orientation) {
+                        if (orientation > 4) {
+                            can.width = height;
+                            can.style.width = styleHeight;
+                            can.height = width;
+                            can.style.height = styleWidth;
+                        }
+                        switch (orientation) {
+                            case 2:
+                                ctx.translate(width, 0);
+                                ctx.scale(-1, 1);
+                                break;
+                            case 3:
+                                ctx.translate(width, height);
+                                ctx.rotate(Math.PI);
+                                break;
+                            case 4:
+                                ctx.translate(0, height);
+                                ctx.scale(1, -1);
+                                break;
+                            case 5:
+                                ctx.rotate(0.5 * Math.PI);
+                                ctx.scale(1, -1);
+                                break;
+                            case 6:
+                                ctx.rotate(0.5 * Math.PI);
+                                ctx.translate(0, -height);
+                                break;
+                            case 7:
+                                ctx.rotate(0.5 * Math.PI);
+                                ctx.translate(width, -height);
+                                ctx.scale(-1, 1);
+                                break;
+                            case 8:
+                                ctx.rotate(-0.5 * Math.PI);
+                                ctx.translate(-width, 0);
+                                break;
+                        }
+                    }
+
+                    ctx.drawImage(thisImage, 0, 0);
+                    ctx.restore();
+                    var dataURL = can.toDataURL();
+                    var image_section = document.getElementById("image_section");
+                    image_section.src = dataURL;
+                    // at this point you can save the image away to your back-end using 'dataURL'
+                }
+                // now trigger the onload function by setting the src to your HTML5 file object (called 'file' here)
+                thisImage.src = URL.createObjectURL(file);
+            });
+        }
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#image_section').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        };
+
+        {#var fileInput = document.getElementById("file-picker");#}
+        {##}
+        {#fileInput.onchange = function(event) {#}
+        {#    var file = event.target.files[0];#}
+        {##}
+        {#    getOrientation(file, function(orientation) {#}
+        {#        console.log(orientation);#}
+        {#    });#}
+        {#};#}
+
+
+
+        $("#file-picker").change(function(){
+            readURL(this);
+        });
+
+        $("#loading").hide();
+        $("#lower_30").hide();
+        $("#upper_30").hide();
+        $("#upload-button").hide();
+        $("#fade_info_table").hide();
+        $("#result_fadeIn").hide();
+
+
+        var plate_type = "{{ car }}";
+
+        if (plate_type == "General Vehicle") {
+            document.getElementById("type_of_color_ori").style.color = 'dimgrey';
+            document.getElementById("type_of_color_plate").style.color = 'dimgrey'
+        } else {
+            document.getElementById("type_of_color_ori").style.color = 'dodgerblue';
+            document.getElementById("type_of_color_plate").style.color = 'dodgerblue';
+            document.getElementById("type_of_car_ori").className = "fas fa-charging-station";
+            document.getElementById("type_of_car_plate").className = "fas fa-charging-station"
+        };
+
+
+        $("#error_plate").hide();
+
+        var status = "{{ status }}";
+        console.log(status);
+
+        if (status==1) {
+            $("#no_plate").hide();
+            $("#error_plate").hide();
+            {#$("#result_fadeIn").style.display='';#}
+            document.getElementById("result_fadeIn").style.display = 'block';
+            $("#fade_info_table").style.display='';
+            document.getElementById("fade_info_table").style.display = 'none';
+            {#$("#loading").hide();#}
+            document.getElementById("loading").style.display = 'none';
+        }
+        else {
+            $("#no_plate").show();
+            $("#result_fadeIn").hide();
+            $("#error_plate").show();
+        };
+
+
+
+
+</script>
+</html>
