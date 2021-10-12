@@ -124,7 +124,7 @@ numexpr==2.7.0
 numpy==1.16.4
 numpydoc==0.9.1
 olefile==0.46
-opencv-contrib-python==3.4.2.17
+opencv-contrib-python==4.2.0.32
 opencv-python==3.4.2.17
 openpyxl==3.0.0
 packaging==19.2
